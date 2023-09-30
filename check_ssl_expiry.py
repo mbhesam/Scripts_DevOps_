@@ -9,8 +9,8 @@ import sys
 import telegram
 import asyncio
 
-BOT_TOKEN = '5933653463:AAFHG3O-GI9pVWqxQX1hHQoStBU6M7TVJaA'
-CHAT_ID = '-4091833453'
+BOT_TOKEN = 'BOT_TOKEN'
+CHAT_ID = 'CHAT_ID'
 
 DEFAULT_HTTPS_PORT = 443
 WORKER_THREAD_COUNT = multiprocessing.cpu_count()
