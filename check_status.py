@@ -8,16 +8,21 @@ import time
 import sys
 import telegram
 import asyncio
+import environ
 
-
-BOT_TOKEN = '5933653463:AAFHG3O-GI9pVWqxQX1hHQoStBU6M7TVJaA'
-CHAT_ID = '-4091833453'
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+environ.Env.read_env('.env.check_status')
+BOT_TOKEN = env('BOT_TOKEN')
+CHAT_ID = env('CHAT_ID')
+TIMEOUT = env.int('TIMEOUT')
 
 def get_website_status(url):
     # handle connection errors
     try:
         # open a connection to the server with a timeout
-        with urlopen(url, timeout=40) as connection:
+        with urlopen(url, timeout=TIMEOUT) as connection:
             # get the response code, e.g. 200
             code = connection.getcode()
             return code

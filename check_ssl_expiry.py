@@ -8,14 +8,19 @@ import math
 import sys
 import telegram
 import asyncio
+import environ
 
-BOT_TOKEN = '5933653463:AAFHG3O-GI9pVWqxQX1hHQoStBU6M7TVJaA'
-CHAT_ID = '-4091833453'
+env = environ.Env(
+    DEBUG=(bool, False)
+)
 
-DEFAULT_HTTPS_PORT = 443
+environ.Env.read_env('.env.check_ssl_expiry')
+BOT_TOKEN = env('BOT_TOKEN')
+CHAT_ID = env('CHAT_ID')
+DEFAULT_HTTPS_PORT = env.int('DEFAULT_HTTPS_PORT')
 WORKER_THREAD_COUNT = multiprocessing.cpu_count()
-SOCKET_CONNECTION_TIMEOUT_SECONDS = 10
-WARN_IF_DAYS_LESS_THAN = 7
+SOCKET_CONNECTION_TIMEOUT_SECONDS = env.int('SOCKET_CONNECTION_TIMEOUT_SECONDS')
+WARN_IF_DAYS_LESS_THAN = env.int('WARN_IF_DAYS_LESS_THAN')
 EXIT_SUCCESS = 0
 EXIT_EXPIRING_SOON = 1
 EXIT_ERROR = 2
