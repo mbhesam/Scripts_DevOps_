@@ -1,5 +1,3 @@
-# SuperFastPython.com
-# example of pinging the status of a set of websites
 from urllib.request import urlopen
 from urllib.error import URLError
 from urllib.error import HTTPError
